@@ -1,9 +1,17 @@
 <?php
 
 require_once ROOT . '/Controllers/Controller.php';
+require_once ROOT . '/Models/UserModel.php';
 
 class UserController extends Controller
 {
+    private $user_model;
+
+    public function __construct()
+    {
+        $this->user_model = new UserModel();
+    }
+
     public function login() {
         $error = $_SESSION['error'] ?? false;
         unset($_SESSION['error']);
