@@ -30,6 +30,7 @@ $controller = ucfirst($params[0]);
 
 // file_exists() => Recherche si un fichier existe dans un dossier
 if (!file_exists(ROOT . '/Controllers/' . $controller . 'Controller.php')) {
+    // Envoit du code d'erreur au client
     http_response_code(404);
     $controller = 'Error';
 }

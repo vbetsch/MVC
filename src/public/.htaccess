@@ -1,0 +1,7 @@
+RewriteEngine On
+# On récupère l'uri si celui-ci ne contient pas de point et on le passe en paramètre "page"
+RewriteRule ^([A-z0-9/_-]*)$ index.php?page=$1
+
+# On redirige les erreur d'apache sur le controlleur d'erreur
+ErrorDocument 403 /index.php?p=Error/not_authorized
+ErrorDocument 404 /index.php?p=Error/not_found

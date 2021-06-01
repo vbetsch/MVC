@@ -7,6 +7,7 @@ class GlobalController extends Controller
     public $default = 'index';
 
     public function index() {
+        /* Page d'entrée du site côté client */
         $this->render('index');
     }
 }
