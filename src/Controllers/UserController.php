@@ -14,6 +14,10 @@ class UserController extends Controller
 
     public function login() {
 
+        if (isset($_SESSION['user'])) {
+            header('Location: ' . SITE . '/User/dashboard');
+        }
+
         // Récupération de la possible erreur
         $error = $_SESSION['error'] ?? false;
 
@@ -21,7 +25,7 @@ class UserController extends Controller
         unset($_SESSION['error']);
 
         // Affichage de la page
-        $this->render('login', ['error' => $error]);
+        $this->render('login', ['title' => 'Connexion', 'error' => $error]);
     }
 
     public function process_login() {
@@ -56,7 +60,20 @@ class UserController extends Controller
 
         $_SESSION['user'] = ['id' => $user_id, 'name' => $login];
 
-        $this->render("dashboard", ["name" => $_SESSION['user']['name']]);
+        header('Location: ' . SITE . '/User/dashboard');
+    }
+
+    public function dashboard() {
+        if (!isset($_SESSION['user'])) {
+            header('Location: ' . SITE . '/User/login');
+        }
+        $this->render('dashboard', ['title' => 'Accueil', 'name' => $_SESSION['user']['name']]);
         // => $data['name']; (dans dashboard.php)
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['user']);
+        header('Location: ' . SITE);
     }
 }

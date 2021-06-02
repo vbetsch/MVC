@@ -7,6 +7,9 @@ abstract class Controller
     public $default = 'not_found';
 
     public function render(string $file, $args = []) {
+
+        $title = isset($args['title']) ? (' - ' . $args['title']) : '';
+
         /*
          * Permet l'affichage du contenu de la page entouré du template principale du site
          */
