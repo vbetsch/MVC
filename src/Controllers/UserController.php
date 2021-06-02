@@ -25,7 +25,7 @@ class UserController extends Controller
         unset($_SESSION['error']);
 
         // Affichage de la page
-        $this->render('login', ['title' => 'Connexion', 'error' => $error]);
+        $this->render('login', 'Connexion', ['error' => $error]);
     }
 
     public function process_login() {
@@ -67,7 +67,7 @@ class UserController extends Controller
         if (!isset($_SESSION['user'])) {
             header('Location: ' . SITE . '/User/login');
         }
-        $this->render('dashboard', ['title' => 'Accueil', 'name' => $_SESSION['user']['name']]);
+        $this->render('dashboard', 'Accueil', ['name' => $_SESSION['user']['name']]);
         // => $data['name']; (dans dashboard.php)
     }
 

@@ -6,20 +6,19 @@ abstract class Controller
     // La valeur 'not_found' va rédiger vers une page 404
     public $default = 'not_found';
 
-    public function render(string $file, $args = []) {
+    public function render(string $file, string $title, ?array $args = null) {
 
-        $title = isset($args['title']) ? (' - ' . $args['title']) : '';
+        $ext = is_null($args) ? 'html' : 'php';
 
         /*
          * Permet l'affichage du contenu de la page entouré du template principale du site
          */
 
-
         // Creation d'un buffer qui stock les sortie (stdout => buffer)
         ob_start();
 
         // Ajout de la page dans le buffer
-        require_once ROOT . '/Views/' . basename(get_class($this), 'Controller') . '/' . $file . '.php';
+        require_once ROOT . '/Views/' . basename(get_class($this), 'Controller') . '/' . $file . '.' . $ext;
 
         // Récupération du contenu mis dans le buffer en tant que variable
         $content = ob_get_clean();
