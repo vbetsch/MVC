@@ -1,17 +1,20 @@
 <?php
 
+require_once ROOT . '/Core/Singleton.php';
 
-class db_connect
+class Db_connect extends Singleton
 {
     private $host = 'localhost';
     private $name = 'mvc';
     private $user = 'root';
     private $pass = '';
-
     private $conn;
+
     public $status;
 
-    public function __construct()
+    public static $instance;
+
+    protected function __construct()
     {
         try {
 

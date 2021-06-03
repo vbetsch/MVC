@@ -7,7 +7,7 @@ class ErrorController extends Controller
     public function not_found()
     {
         /* La page d'erreur 404, non trouvé */
-        $this->render('404', 'Erreur404', []);
+        $this->render('404', 'Erreur404');
     }
 
     public function not_authorized()

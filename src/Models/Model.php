@@ -1,6 +1,6 @@
 <?php
 
-require_once ROOT . '/Core/db_connect.php';
+require_once ROOT . '/Core/Db_connect.php';
 
 abstract class Model
 {
@@ -8,6 +8,6 @@ abstract class Model
 
     public function __construct()
     {
-        $this->connexion = new db_connect();
+        $this->connexion = db_connect::get_instance();
     }
 }
