@@ -1,6 +1,6 @@
 <?php
 
-require_once ROOT . '/Core/Router.php';
+require_once ROOT . '/Core/Singleton.php';
 
 class Router extends Singleton
 {
